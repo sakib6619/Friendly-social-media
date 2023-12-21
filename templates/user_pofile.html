@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Profile {% endblock title %}
+{% block body %}
+{% include "header.html" %}
+    <main>
+        <section>
+            <img src="{{user.profile.coverImg.url}}" class="cover-phone">
+            <img src="{{user.profile.image.url}}" class="profile-picture">
+            <div class="profile-container">
+                <div>
+                    <p class="profile-page-username">{{user.username}}</p>
+                    <p class="Friends-counter"><span>60</span> friends</p>
+                </div>
+                <button type="button" class="Edit-profile Open-Edit-modal"><i class="fa-solid fa-pencil"></i> Edit Proflie</button>
+                <dialog class="Edit-profile-dialog">
+                    <div class="Edit-profile-dialog-header">
+                        <h2>Edit profile</h2>
+                        <i class="fa-solid fa-xmark close-btn"></i>
+                    </div>
+                    <div>
+                        <form class="user-info-edit-form" method="POST" novalidate>
+                            {% csrf_token %}
+                            <img src="{{edit_profile.image.url}}">
+                            <legend class="profile-legends">upload profile photo</legend>
+                            <img src="{{edit_profile.coverImg.url}}">
+                            <input type="file" name="image">
+                            <legend class="cover-legends">upload cover photo</legend>
+                            <input type="file" name="cover">
+                            <div class="names">
+                                <div>
+                                    <legend class="first-name-legends">Edit first name</legend>
+                                    <input type="text" value="{{edit_profile.user.first_name}}" name="fname" placeholder="First name" class="First-name-input">
+                                </div>
+                                <div>
+                                    <legend class="last-name-legends">Edit Last name</legend>
+                                    <input type="text" value="{{edit_profile.user.last_name}}" name="lname" placeholder="Last name" class="last-name-input">
+                                </div>
+                            </div>
+                            <legend class="username-legends">Edit your bio</legend>
+                            <input type="text" value="{{edit_profile.bio}}" name="bio" class="username-input">
+                            <div>
+                                <label for=""> gender </label>
+                                <select id="relationship" value="{{edit_profile.gender}}" name="gender"  class="shadow-none bg-gray-100">
+                                 <option value="1">Male</option>
+                                 <option value="3">Female</option>
+                                 <option value="4">Others</option>
+                               </select>
+                             </div>
+                            <div>
+                                <label for=""> Relationship </label>
+                                <select id="relationship" value="{{edit_profile.relationship}}" name="relationship"  class="shadow-none bg-gray-100">
+                                 <option value="1">Single</option>
+                                 <option value="3">Married</option>
+                                 <option value="4">devorced</option>
+                               </select>
+                             </div>
+                            <legend class="birtday-legends">Edit birth date</legend>
+                            <input type="date" class="Birthday-input" value="{{edit_profile.birth_date|date:"Y-m-d"}}" name="birthDate">
+                            <legend class="email-legends">Edit your email</legend>
+                            <input type="email" value="{{edit_profile.user.email}}" name="email" placeholder="your@gmai.com" class="SignUp-userEmail">
+                            <legend class="phone-legends">Edit your Phone number</legend>
+                            <input type="number" name="phone" value="{{edit_profile.phone}}" placeholder="Phone number" class="SignUp-userEmail">
+                            <legend class="address-legends">Edit your address</legend>
+                            <input type="text"  cols="30" rows="10" value="{{edit_profile.address}}" name="address" placeholder="Address" class="SignUp-userEmail">
+                            <button type="submit" class="SignUp-btn">Save</button>
+                            <a href="#" class="post-sectoin-btn">Update password</a>
+                        </form>
+                    </div>
+                </dialog>
+            </div>
+        </section>
+        <section>
+            <h1 class="Info-section-Title">Information</h1>
+            <div class="Info-section">
+                <p><i class="fa-regular fa-user"></i> Username : <span>{{user.username}}</span></p>
+                <p><i class="fa-solid fa-mars-and-venus"></i> Gender: <span>{{user.profile.gender}}</span></p>
+                <p><i class="fa-solid fa-heart"></i> Status: <span>{{user.profile.relationship}}</span></p>
+                <p><i class="fa-regular fa-calendar"></i> Birth date: <span>{{user.profile.birth_date}}</span></p>
+                <p><i class="fa-solid fa-envelope"></i> Email : <span>{{user.email}}</span></p>
+                <p><i class="fa-solid fa-mobile"></i> Phone: <span>+88{{user.profile.phone}}</span></p>
+                <p><i class="fa-solid fa-house-chimney"></i> home: <span>{{user.profile.address}}</span></p>
+            </div>
+        </section>
+        <section class="post-section">
+            <img src="{{user.profile.image.url}}" class="post-section-profile-picture">
+            <button type="button" class="post-sectoin-btn open-post-modal">Create a post</button>
+        </section>
+            {% comment %} <section>
+                <dialog class="Create-post-dialog">
+                    <div class="Create-post-dialog-header">
+                        <h2>Create a post</h2>
+                        <i class="fa-solid fa-xmark close-post-modal"></i>
+                    </div>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="What's on your mind" class="post"></textarea>
+                    <input type="file" class="post-img">
+                    <button class="postBtn p">Post</button>
+                </dialog>
+            </section> {% endcomment %}
+        <section>
+            <div>
+                <div class="homeFeed-userinfo">
+                    <img src="{% static 'images/demo_user1.jpg' %}" class="homeFeed-user-profile">
+                    <a href="#" class="homeFeed-username">sam_wind</a>
+                </div>
+                <img src="{% static 'images/demo_post1.jpg' %}" class="homeFeed-Post">
+                <div>
+                    <h2 class="homeFeed-post-caption">Hey I made a house in minecraft</h2>
+                    <div class="reacts">
+                        <div>
+                            <button type="button" class="post-btn"><i class="fa-solid fa-heart"></i></button>
+                            <button type="button" class="post-btn"><i class="fa-solid fa-comment Open-Modal"></i></button>
+                            
+                    <dialog class="modal">
+                        <div class="modal-header">
+                            <button type="button" class="Close-modal"><i class="fa-solid fa-chevron-left"></i></button>
+                            <p>Comments</p>
+                        </div>
+                        <div>
+                            <div class="User01">
+                                <div class="commented-user-info">
+                                    <img src="{% static 'images/demo-user.jpg' %}" class="commented-user-profile-picture">
+                                    <p class="commmented-username">siyam</p>
+                                </div>
+                                <p class="comment">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, cum!</p>
+                            </div>
+                        </div>
+                    </dialog>
+                            <button type="button" class="post-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                        </div>
+                        <button type="button" class="post-btn"><i class="fa-solid fa-bookmark"></i></button>
+                    </div>
+                    <p class="like-counter">2k like</p>
+                    <form>
+                        <input type="text" placeholder="comment" class="commenet-box">
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

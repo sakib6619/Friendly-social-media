@@ -1,0 +1,23 @@
+{% load static %}
+<header>
+    <nav class="navbar">
+        <div>
+            <a  href="{% url 'Home' %}" class="logo">Friendlly</a>
+            <input type="search" placeholder="search">
+        </div>
+        <div class="homefeed-navlinks-group">
+            <div class="nav-links">
+                <a href="{% url 'Home' %}"><i class="fa-solid fa-house"></i></a>
+                <a href="{% url 'friendRequest' %}"><i class="fa-solid fa-user-group"></i></a>
+                <a href="{% url 'inbox' %}"><i class="fa-solid fa-comments"></i></a>
+            </div>
+            <button class="profile-btn"><img src="{{user.profile.image.url}}" alt="log in user profile picture" class="login-user-Profile-picture"></button>
+            <ul class="dropdown">
+                <li><a href="{% url 'profile' %}">View profile</a></li>
+                <li><a href="#">Setting</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="{% url 'logout' %}">Log out</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>

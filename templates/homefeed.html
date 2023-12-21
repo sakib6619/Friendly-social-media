@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+    <main>
+{% include "header.html" %}
+        <section>
+            {% for post in posts %}
+            <div>
+                <div class="homeFeed-userinfo">
+                    <img src="{{post.author.image.url}}" class="homeFeed-user-profile">
+                    <a href="#" class="homeFeed-username">{{post.author.user.username}}</a>
+                    <p class="homeFeed-date">posted:-{{post.date_posted}} </p>
+                </div>
+                <p>{{post.content}}</p>
+                <img src="{{post.post_image.url}}" class="homeFeed-Post">
+                <div>
+                    <h2 class="homeFeed-post-caption">Topic #{{post.topic}}</h2>
+                    <div class="reacts">
+                        <div>
+                            <button type="button" class="post-btn"><i class="fa-solid fa-heart"></i></button>
+                            <button type="button" class="post-btn"><i class="fa-solid fa-comment Open-Modal"></i></button>
+                            
+                    <dialog class="modal dialog">
+                        <div class="modal-header">
+                            <button type="button" class="Close-modal"><i class="fa-solid fa-chevron-left"></i></button>
+                            <p>Comments</p>
+                        </div>
+                        <div>
+                            <div class="User01">
+                                <div class="commented-user-info">
+                                    <img src="{% static 'Images/demo-user.jpg' %}" class="commented-user-profile-picture">
+                                    <p class="commmented-username">siyam</p>
+                                </div>
+                                <p class="comment">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, cum!</p>
+                            </div>
+                        </div>
+                    </dialog>
+                            <button type="button" class="post-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                        </div>
+                        <button type="button" class="post-btn"><i class="fa-solid fa-bookmark"></i></button>
+                    </div>
+                    <p class="like-counter">2k like</p>
+                    <form>
+                        <input type="text" placeholder="comment" class="commenet-box">
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock %}

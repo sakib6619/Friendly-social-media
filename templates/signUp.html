@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} signUp {% endblock title %}
+{% block body %}
+    <header>
+        <nav>
+            <a  href="{% url 'Home' %}" class="logo">Friendlly</a>
+        </nav>
+    </header>
+    <main>
+        <section class="SignUp-container">
+            <img src="{% static 'Images/Sign up-rafiki.svg' %}" alt="sign up page svg" class="signUp-svg">
+            <div>
+                <h1 class="signUp_Title">sign up</h1>
+                {% if messages %}
+                    {% for message in messages %}
+                    <small style="color:red;">{{message}}</small>
+                    {% endfor %}
+                    {% endif %}
+                <form class="signUp-form" method="POST" novalidate>
+                    {% csrf_token %}
+                    <label for="username">Username<span>*</span></label>
+                        {{form.username}}
+                        {{form.username.errors}}
+                        <label for="email-id">Email Address <span>*</span></label>
+                        {{form.email}}
+                        {{form.email.errors}}
+                        <label for="userpass">Password <span>*</span></label>
+                        {{form.password1}}
+                        {{form.password1.errors}}
+                        <label for="userpass">Confirm Password <span>*</span></label>
+                        {{form.password2}}
+                        {{form.password2.errors}}
+                    <button type="submit" class="SignUp-btn">Sign Up</button>
+                </form>
+                <p class="Extra-line">Already have an account? <a href="{% url 'signin' %}" class="login-link">Log in</a></p>
+            </div>
+        </section>
+    </main>
+{% endblock %}

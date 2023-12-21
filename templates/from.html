@@ -1,0 +1,117 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    <title>Student profile</title>
+</head>
+
+<body>
+    <h2>Edit your profile</h2>
+    <div class="from_main">
+        <div class="col-1">
+            <input type="image" src="http://www.clker.com/cliparts/M/o/W/d/C/j/about-icon-md.png" width=100px
+                height=100px></img>
+            <br></br>
+            <input type="file" name="image">
+            <br></br>
+            <form action="student-profile.php" method="post">
+        </div>
+        <div class="col-2">
+            <label for="last-name">Last name :</label>
+            <div class="col-2-8">
+                <input type="text" id="lastname" name="last_nm" required>
+            </div>
+            <br></br>
+            <label for="first-name">First name:</label>
+            <div class="col-2-8">
+                <input type="text" id="firstname" name="first_nm" required>
+            </div>
+            <br></br>
+            <label for="faculty">Faculty:</label>
+            <div class="col-2-8">
+                <select name="faculty">
+                    <option value="faculty of business and hospitality management">Faculty of Business and Hospitality
+                        Management</option>
+                    <option value="faculty of social and health care">Faculty of Social and Health Care</option>
+                    <option value="faculty of technology">Faculty of Technology</option>
+                    <option value="institute of design and fine arts">Institute of Design and Fine Arts</option>
+                    <option value="institute of music and drama">Institute of Music and Drama</option>
+                </select>
+            </div>
+            <br></br>
+            <label for="degree">Degree:</label>
+            <div class="col-2-8">
+                <select name="degree">
+                    <option value="bachelor">Bachelor</option>
+                    <option value="master">Master</option>
+                </select>
+            </div>
+            <br></br>
+            <label for="work-experience">Work experience:</label>
+            <div class="col-2-8">
+                <input type="text" id="workexp" name="work_experience">
+            </div>
+            <br></br>
+            <label for="skill">Skills:</label>
+            <div class="col-2-8">
+                <textarea id="skill" name="skill">
+</textarea>
+            </div>
+            <br></br>
+            <label for="lang-skill">Language skills:</label>
+            <div class="col-2-8">
+                <textarea id="lang-skill" name="lang-skill">
+</textarea>
+            </div>
+        </div>
+        <br></br>
+    </div>
+    <button type="submit">Save</button>
+    <button type="reset">Cancel</button>
+    </form>
+
+
+
+    <style>
+        .from_main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        input {
+            margin: 10px;
+        }
+
+        /***PROFILE IMAGE UPLOAD***/
+        .col-1 {
+            order: -1;
+            padding-left: 20px;
+        }
+
+        /***PROFILE EDIT FORM***/
+        .col-2 {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            order: 0;
+        }
+
+        /**** INPUT, OPTION, SELECT***/
+        input {
+            margin-top: auto;
+        }
+
+        select {
+            margin-top: auto;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} inbox {% endblock title %}
+{% block body %}
+{% include "header.html" %}
+    <main>
+        <section>
+        <a href="{% url 'message' %}">
+            <div class="user">
+                <img src="./Images/demo-user.jpg" class="user_profile_picture">
+                <p class="Chatlist-uername">siyam</p>
+            </div>
+        </a>
+        </section>
+    </main>
+{% endblock %}

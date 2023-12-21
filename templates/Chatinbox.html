@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Message {% endblock title %}
+{% block body %}
+{% include "header.html" %}
+    <main>
+        <section class="inbox">
+            <div class="inbox-header">
+                <div class="User_Info">
+                    <img src="./Images/demo-user.jpg" class="user_profile_picture">
+                    <p class="Chatlist-uername">Siyam</p>
+                </div>
+                <div class="calls-group">
+                    <i class="fa-solid fa-phone"></i>
+                    <i class="fa-solid fa-video"></i>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </div>
+            <div class="Inbox-footer">
+                <i class="fa-solid fa-image"></i>
+                <input type="text" placeholder="message">
+                <button type="button"><i class="fa-regular fa-paper-plane"></i></button>
+            </div>
+        </section>
+    </main>
+{% endblock %}

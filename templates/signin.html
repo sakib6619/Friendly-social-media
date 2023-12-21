@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Login {% endblock title %}
+{% block body %}
+    <header>
+        <nav>
+            <a  href="{% url 'Home' %}" class="logo">Friendlly</a>
+        </nav>
+    </header>
+    <main>
+        <section class="login-container">
+            <img src="{% static 'Images/Mobile login-bro.svg' %}" alt="log-in page svg" class="login-svg">
+            <div class="login-text-container">
+                <h1 class="Login_Title">Log In</h1>
+                {% if messages %}
+                    {% for message in messages %}
+                    <small style="color:red;">{{message}}</small>
+                    {% endfor %}
+                    {% endif %}
+                <form class="login-form" method="POST" novalidate>
+                    {% csrf_token %}
+                    <label for="name">Username  <span>*</span></label>
+                        {{form.username}}
+                        {{form.username.errors}}
+                        <label for="pass">Password <span>*</span></label>
+                        {{form.password}}
+                        {{form.password.errors}}
+                    <button type="submit" class="btn-primary">Log in</button>
+                </form>
+                <div class="extra-links">
+                    <a href="{% url 'forgotPassword' %}" class="Forgot-password">Forgot password?</a>
+                    <a href="{% url 'signup' %}" class="CAA">Create an account</a>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

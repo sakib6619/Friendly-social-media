@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Friend Request {% endblock title %}
+{% block body %}
+{% include "header.html" %}
+    <main>
+        <section>
+            <div class="pt1">
+                <img src="./Images/demo-user.jpg" class="User_request_profile_picture">
+                <div class="pt2">
+                    <p class="user_request_username">Siyam</p>
+                    <div>
+                        <button class="reques_ans_btn confirm" type="submit">Confirm</button>
+                        <button class="reques_ans_btn delete" type="submit">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
